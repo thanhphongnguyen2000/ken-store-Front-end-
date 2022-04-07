@@ -1,0 +1,35 @@
+<!-- ------------Account-page------------------- -->
+<div class="account-page">
+  <div class="container">
+      <div class="row">
+          <div class="col-2">
+              <img src="/assets/images/bgproduct2.png" width="100%">
+          </div>
+
+          <div class="col-2">
+              <div class="form-container">
+                  <div class="form-btn">
+                      <span>Login</span>
+                  </div>
+
+                  <form id="Form" [formGroup]="accountForm" (ngSubmit)="submitData()">
+                    <input type="email" formControlName="email" placeholder="Email">
+                    <div *ngIf="email.invalid && (email.touched)||email.dirty">
+                      <span class="errors" style="color: red; font-style: italic;" *ngIf="email.errors?.required">* Bạn chưa nhập email!</span>
+                      <span class="errors" style="color: red; font-style: italic;" *ngIf="email.errors?.email">* Vui lòng nhập đúng email!</span>
+                  </div>
+
+                    <input type="password" formControlName="password" placeholder="Password">
+                    <div *ngIf="password.invalid && (password.touched)||password.dirty">
+                      <span class="errors" style="color: red; font-style: italic;" *ngIf="password.errors?.required">* Bạn chưa nhập mật khẩu!</span>
+                  </div>
+
+                    <button type="submit" class="btn">Login</button>
+                    <a [routerLink]="['/register']" routerLinkActive="router-link-active"  class="btn">Register &#8594;</a>
+                </form>
+
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

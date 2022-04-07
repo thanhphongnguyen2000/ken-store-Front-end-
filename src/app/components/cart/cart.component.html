@@ -1,0 +1,67 @@
+<div class="col-12 cart_empty" *ngIf="cartData.data[0].numInCart === 0">
+  <br/>
+  <div class="small-container">
+  <h1 class="tittle">Giỏ hàng của bạn!</h1>
+  <div class="text-center">
+    <div style="text-align: center;">
+    <img src="/assets/images/smile1.png" />
+    <p class="txt_empty">
+      <span>Giỏ của bạn đang trống?</span> Đặt hàng ngay để sở hữu những loại nước hoa đặc biệt của shop!...
+    </p>
+    <div class="sidebar_btn sidebar_btn_new">
+      <a
+        [routerLink]="['/']"
+        routerLinkActive="router-link-active"
+        class="btn"
+        ><span>Đặt hàng ngay &#8594;</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- -----------------cart item details------------------- -->
+<div class="small-container cart-page" *ngIf="cartData.data[0].numInCart !== 0">
+  <table>
+      <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+      </tr>
+      <tr *ngFor="let c of cartData.data; let i = index">
+          <td>
+              <div class="cart-info" >
+                  <img src="/assets/images/imageProduct/{{c.product.hinhanh}}" style="border: red solid 2px;">
+                  <div>
+                      <p style="color: red; font-weight: bold;">{{c.product.tensanpham}}</p>
+                      <br>
+                      <i class="fa fa-times-circle-o" (click)="cartService.DeleteProductFromCart(i)" aria-hidden="true"></i>
+                  </div>
+              </div>
+          </td>
+          <td style="text-align: center;"><button class="button-add" type="button" id="decrease" (click)="ChangeQuantity(i, false)"><i class="fa fa-minus-circle"></i></button>
+            <input type="number" id="number" [value]="c.numInCart" readonly [max]="c.product.soluong" style="text-align: center; font-weight: bold; color: red; font-size: 18px;">
+            <button class="button-add" type="button" id="increase" (click)="ChangeQuantity(i, true)"><i class="fa fa-plus-circle"></i></button></td>
+          <td>${{c.product.dongia}} USD</td>
+      </tr>
+  </table>
+
+  <div class="total-price">
+      <div style="display: flex;">
+              <div style="padding-right: 50px;">Total Prices:</div>
+              <div style="color: red; font-weight: bold;">${{cartTotal}} USD</div>
+        </div>
+  </div><br/><br/>
+  <div class="box-1">
+  <div>
+    <div class="animated-word">
+      <a [routerLink]="['/checkout']" routerLinkActive="router-link-active" >
+        <span class="cart-btn">Thanh Toán</span></a>
+    </div><br/><br/>
+    <div class="animated-word">
+      <a [routerLink]="['/']" routerLinkActive="router-link-active">
+        <span class="cart-btn">Tiếp Tục Mua</span></a>
+    </div>
+  </div>
+</div>
+</div>

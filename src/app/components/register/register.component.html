@@ -1,0 +1,46 @@
+<!-- ------------Account-page------------------- -->
+<div class="account-page">
+  <div class="container">
+      <div class="row">
+          <div class="col-2">
+              <img src="/assets/images/bgproduct2.png" width="100%">
+          </div>
+
+          <div class="col-2">
+              <div class="form-container">
+                  <div class="form-btn">
+                      <span>Register</span>
+                  </div>
+
+                  <form id="RegForm" [formGroup]="registerForm" (ngSubmit)="submitData()">
+                      <input type="username" formControlName="username" placeholder="Username">
+                      <div *ngIf="username.invalid && (username.touched)||username.dirty">
+                        <span class="errors" style="color: red; font-style: italic;" *ngIf="username.errors?.required">* Vui lòng nhập tên của bạn!</span>
+                        <span class="errors" style="color: red; font-style: italic;" *ngIf="username.errors?.pattern">* Tên bạn phải là chữ!</span>
+                    </div>
+
+                      <input type="phone" formControlName="phone" placeholder="Phone">
+                      <div *ngIf="phone.invalid && (phone.touched)||phone.dirty">
+                        <span class="errors" style="color: red; font-style: italic;" *ngIf="phone.errors?.required">* Vui lòng nhập sđt của bạn!</span>
+                        <span class="errors" style="color: red; font-style: italic;" *ngIf="phone.errors?.pattern">* Sđt phải là số!</span>
+                    </div>
+
+                      <input type="email" formControlName="email" placeholder="Email">
+                      <div *ngIf="email.invalid && (email.touched)||email.dirty">
+                        <span class="errors" style="color: red; font-style: italic;" *ngIf="email.errors?.required">* Bạn chưa nhập email!</span>
+                        <span class="errors" style="color: red; font-style: italic;" *ngIf="email.errors?.email">* Vui lòng nhập đúng email!</span>
+                    </div>
+
+                    <input type="password" formControlName="password" placeholder="Password">
+                    <div *ngIf="password.invalid && (password.touched)||password.dirty">
+                      <span class="errors" style="color: red; font-style: italic;" *ngIf="password.errors?.required">* Bạn chưa nhập mật khẩu!</span>
+                  </div>
+
+                      <button type="submit" class="btn">Register</button>
+                  </form>
+
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

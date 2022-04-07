@@ -1,0 +1,58 @@
+<div id="wrapper" *ngIf="cartData.total > 0">
+	<div class="container1">
+		<div class="order">
+			<h2>Your Order Summary</h2>
+
+      <div class="item" *ngFor="let c of cartData.data;">
+				<img src='/assets/images/imageProduct/{{c.product.hinhanh}}' alt='hinhsanpham' style="width: 100px; height: 100px;">
+				<div class="info">
+					<h4 style="color: red; font-weight: bold;">{{c.product.tensanpham}}</h4><br>
+					<p class="quantity">Quantity: <strong style="color: red;">{{c.numInCart}}</strong></p>
+					<p class="price">Prices: ${{c.product.dongia}} USD</p>
+				</div> <!-- .info -->
+			</div> <!-- .item -->
+
+			<h4 class="ship">Shipping: <strong style="color: red;">FREE</strong></h4>
+			<hr>
+			<h3 class="total">Total: ${{cartTotal}} USD</h3>
+		</div> <!-- .order -->
+	</div> <!-- .container1 -->
+
+	<div class="container2">
+		<div class="checkout">
+			<p><i class="fa fa-check-circle"></i>Shipping</p>
+			<p><i class="fa fa-check-circle"></i>Checkout</p>
+			<p><i class="fa fa-check-circle"></i>Confirmation</p>
+
+			<div class="payment">
+				<div class="content">
+					<div class="infos">
+						<div class="method">
+							<h2>Choose a payment method</h2>
+							<img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1978060/visa.png' alt='' class="visa">
+							<img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1978060/mastercard.png' alt='' class="mastercard">
+							<img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1978060/paypal.png' alt='' class="paypal">
+						</div> <!-- .method -->
+						<div class="cardNumber">
+							<p class="title">Full Name</p><br>
+							<input type="text">
+						</div> <!-- .cardNumber -->
+						<div class="cardHolderName">
+							<p class="title">Email</p>
+							<input type="text">
+						</div> <!-- cardHolderName -->
+						<div class="expiration">
+							<p class="title">Address</p>
+              <input type="text">
+						</div> <!-- .expiration -->
+						<div class="security">
+							<p class="title">Telephone</p>
+							<input type="text">
+						</div><!-- .security -->
+						<button type="submit" class="btn" [disabled]="cartTotal <= 0 " >CheckOut &#8594;</button>
+					</div> <!-- .infos -->
+				</div> <!-- .content -->
+			</div> <!-- .payment -->
+		</div> <!-- .checkout -->
+	</div> <!-- .container2 -->
+</div> <!-- #wrapper -->
